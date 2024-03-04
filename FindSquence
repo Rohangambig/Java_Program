@@ -1,0 +1,48 @@
+public class Main
+{
+    public static boolean IsSquence(int n)
+    {
+        String s = Integer.toString(n);
+        int i = s.length()-1;
+        while(i>0)
+        {
+            if(s.charAt(i)-s.charAt(i-1) == 1)
+                i-=1;
+            else
+                return false;
+        }
+        
+        return true;
+    }
+    
+    
+    public static int[] FindSequence(int a,int b)
+    {
+        int new_list[] = new int[20];
+        int k = 0;
+        for(int i = a;i<=b;i++)
+        {
+            if((Integer.toString(i)).length() == 1)
+                continue;
+            else if(IsSquence(i))
+            {
+                new_list[k] = i;
+                k+=1;
+            }
+        }
+        return new_list;
+    }
+    
+	public static void main(String[] args) {
+	    int[] list = new int[20];
+	    
+		list = FindSequence(8,4000);
+		for(int i = 0;i<list.length;i++)
+		{
+		    if(list[i] == 0)
+		        break;
+		    else
+		        System.out.print(list[i]+" ");
+		}
+	}
+}
